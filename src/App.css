@@ -1,38 +1,147 @@
+/* ===== 모던 앱 스타일 ===== */
+
+/* .App 클래스: 전체 앱 컨테이너 스타일링 */
 .App {
-  text-align: center;
+  text-align: center;                    /* 텍스트를 가운데 정렬 */
+  min-height: 100vh;                     /* 최소 높이를 화면 전체 높이(100vh)로 설정 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);  /* 135도 각도로 파란색에서 보라색으로 그라데이션 */
+  display: flex;                         /* Flexbox 레이아웃 사용 */
+  align-items: center;                   /* 세로축 중앙 정렬 */
+  justify-content: center;               /* 가로축 중앙 정렬 */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  /* 폰트 패밀리 설정 (우선순위 순서) */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
+/* .App-header 클래스: 헤더 영역 스타일링 */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: rgba(255, 255, 255, 0.1);  /* 반투명 흰색 배경 (알파값 0.1 = 10% 불투명도) */
+  backdrop-filter: blur(10px);            /* 배경에 10px 블러 효과 (글래스모피즘) */
+  border-radius: 20px;                    /* 모서리를 20px 둥글게 */
+  padding: 3rem 4rem;                     /* 안쪽 여백: 위아래 3rem, 좌우 4rem */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);  /* 그림자: x축 0, y축 8px, 블러 32px, 검은색 10% 투명도 */
+  border: 1px solid rgba(255, 255, 255, 0.2);  /* 테두리: 1px 실선, 반투명 흰색 */
+  max-width: 600px;                       /* 최대 너비 600px */
+  margin: 2rem;                           /* 바깥쪽 여백 2rem */
+  animation: fadeInUp 0.8s ease-out;     /* fadeInUp 애니메이션을 0.8초 동안 ease-out으로 실행 */
 }
 
-.App-link {
-  color: #61dafb;
+/* .App-header h1: 제목 스타일링 */
+.App-header h1 {
+  color: white;                           /* 텍스트 색상을 흰색으로 */
+  font-size: 2.5rem;                     /* 폰트 크기를 2.5rem으로 */
+  font-weight: 700;                       /* 폰트 굵기를 700(굵게)으로 */
+  margin-bottom: 1.5rem;                  /* 아래쪽 여백 1.5rem */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);  /* 텍스트 그림자: x축 0, y축 2px, 블러 4px, 검은색 30% 투명도 */
+  animation: slideInDown 0.6s ease-out;  /* slideInDown 애니메이션을 0.6초 동안 ease-out으로 실행 */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* .App-header p: 문단 텍스트 스타일링 */
+.App-header p {
+  color: rgba(255, 255, 255, 0.9);      /* 텍스트 색상을 반투명 흰색(90% 불투명도)으로 */
+  font-size: 1.2rem;                     /* 폰트 크기를 1.2rem으로 */
+  line-height: 1.6;                      /* 줄 간격을 1.6배로 */
+  margin: 1rem 0;                        /* 위아래 여백 1rem, 좌우 0 */
+  animation: slideInUp 0.6s ease-out 0.2s both;  /* slideInUp 애니메이션을 0.6초 동안, 0.2초 지연 후 실행, both는 forwards와 backwards 모두 적용 */
+}
+
+/* .App-header p:nth-child(3): 3번째 p 태그에만 적용 */
+.App-header p:nth-child(3) {
+  animation-delay: 0.4s;                  /* 애니메이션 시작을 0.4초 지연 */
+}
+
+/* .App-header strong: 강조 텍스트 스타일링 */
+.App-header strong {
+  color: #ffd700;                         /* 텍스트 색상을 금색으로 */
+  font-weight: 600;                       /* 폰트 굵기를 600으로 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);  /* 텍스트 그림자 */
+}
+
+/* .App-header em: 이탤릭 텍스트 스타일링 */
+.App-header em {
+  color: #ff6b6b;                         /* 텍스트 색상을 빨간색으로 */
+  font-style: normal;                     /* 이탤릭 스타일 제거 (normal로 설정) */
+  font-weight: 500;                       /* 폰트 굵기를 500으로 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);  /* 텍스트 그림자 */
+}
+
+/* ===== 애니메이션 정의 ===== */
+
+/* fadeInUp 애니메이션: 아래에서 위로 나타나는 효과 */
+@keyframes fadeInUp {
+  from {                                  /* 애니메이션 시작 상태 */
+    opacity: 0;                           /* 완전 투명 */
+    transform: translateY(30px);          /* Y축으로 30px 아래에서 시작 */
   }
-  to {
-    transform: rotate(360deg);
+  to {                                    /* 애니메이션 끝 상태 */
+    opacity: 1;                           /* 완전 불투명 */
+    transform: translateY(0);             /* 원래 위치로 이동 */
   }
+}
+
+/* slideInDown 애니메이션: 위에서 아래로 나타나는 효과 */
+@keyframes slideInDown {
+  from {                                  /* 애니메이션 시작 상태 */
+    opacity: 0;                           /* 완전 투명 */
+    transform: translateY(-30px);         /* Y축으로 30px 위에서 시작 */
+  }
+  to {                                    /* 애니메이션 끝 상태 */
+    opacity: 1;                           /* 완전 불투명 */
+    transform: translateY(0);             /* 원래 위치로 이동 */
+  }
+}
+
+/* slideInUp 애니메이션: 아래에서 위로 나타나는 효과 */
+@keyframes slideInUp {
+  from {                                  /* 애니메이션 시작 상태 */
+    opacity: 0;                           /* 완전 투명 */
+    transform: translateY(30px);          /* Y축으로 30px 아래에서 시작 */
+  }
+  to {                                    /* 애니메이션 끝 상태 */
+    opacity: 1;                           /* 완전 불투명 */
+    transform: translateY(0);             /* 원래 위치로 이동 */
+  }
+}
+
+/* ===== 호버 효과 ===== */
+
+/* .App-header:hover: 마우스 올렸을 때 효과 */
+.App-header:hover {
+  transform: translateY(-5px);            /* Y축으로 5px 위로 이동 */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);  /* 그림자 효과 강화 */
+  transition: all 0.3s ease;              /* 모든 속성 변화를 0.3초 동안 ease로 부드럽게 */
+}
+
+/* ===== 반응형 디자인 ===== */
+
+/* @media: 화면 크기가 768px 이하일 때 적용되는 스타일 */
+@media (max-width: 768px) {
+  .App-header {                           /* 헤더 영역 */
+    padding: 2rem;                        /* 안쪽 여백을 2rem으로 줄임 */
+    margin: 1rem;                         /* 바깥쪽 여백을 1rem으로 줄임 */
+  }
+  
+  .App-header h1 {                        /* 제목 */
+    font-size: 2rem;                     /* 폰트 크기를 2rem으로 줄임 */
+  }
+  
+  .App-header p {                         /* 문단 텍스트 */
+    font-size: 1rem;                     /* 폰트 크기를 1rem으로 줄임 */
+  }
+}
+
+/* ===== 추가 장식 요소 ===== */
+
+/* .App::before: 가상 요소로 배경에 장식 추가 */
+.App::before {
+  content: '';                            /* 가상 요소의 내용 (비어있음) */
+  position: fixed;                        /* 고정 위치 (스크롤해도 움직이지 않음) */
+  top: 0;                                /* 위쪽 위치 0 */
+  left: 0;                               /* 왼쪽 위치 0 */
+  width: 100%;                           /* 너비 100% */
+  height: 100%;                          /* 높이 100% */
+  background:                             /* 배경에 여러 개의 원형 그라데이션 추가 */
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),    /* 첫 번째 원: 좌하단에 보라색 */
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),    /* 두 번째 원: 우상단에 핑크색 */
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);    /* 세 번째 원: 중앙에 하늘색 */
+  pointer-events: none;                   /* 마우스 이벤트 무시 (클릭 불가능) */
+  z-index: -1;                           /* z축 순서를 -1로 설정 (다른 요소들 뒤에 배치) */
 }
